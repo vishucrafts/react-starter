@@ -1,9 +1,12 @@
+import { useState } from "react";
+
 export default function Counter() {
-	let count = 0;
+	const [count, setCount] = useState(0);
+	console.log("Counter renders => means running");
 
 	function handleClick() {
 		console.log("click");
-		count = count + 1;
+		setCount(count + 1);
 	}
 
 	return (
