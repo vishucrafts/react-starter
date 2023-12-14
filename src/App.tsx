@@ -1,10 +1,13 @@
-import Counter from "./Counter";
+import SelectMenu from "./components/SelectMenu/SelectMenu";
 
 function App() {
 	console.log("App renders");
 	return (
 		<div>
-			<Counter />
+			<SelectMenu
+				label="Select Country"
+				options={["United States", "Canada", "India"]}
+			/>
 		</div>
 	);
 }
