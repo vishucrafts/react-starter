@@ -1,13 +1,14 @@
-import { useState } from "react";
-
 export default function Counter() {
-	const [count, setCount] = useState(0);
+	let count = 0;
+
+	function handleClick() {
+		console.log("click");
+		count = count + 1;
+	}
 
 	return (
 		<>
-			<button onClick={() => setCount((count) => count + 1)}>
-				count is {count}
-			</button>
+			<button onClick={handleClick}>count is {count}</button>
 		</>
 	);
 }
