@@ -11,9 +11,10 @@ type Props = {
 // 	selectedOption: "Canada",
 // Updates => []
 export default function SelectMenu(props: Props) {
-	const { label, options } = props;
+	// {label: "Select Country", options: ["United States", "Canada", "India"]}
+	const { label, options } = props; // Destructuring
 
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false); // [state, function setter() {}]
 	const [selectedOption, setSelectedOption] = useState("");
 	console.log("SelectMenu renders");
 
@@ -26,6 +27,8 @@ export default function SelectMenu(props: Props) {
 		// All updates are batched
 		setIsMenuOpen(false); //Schedule an update -> add to the update array
 		setSelectedOption(option); //Schedule an update -> add to the update array
+
+		// return undefined;
 	} // Event handler has finished executing -> flush the update array
 
 	return (
@@ -37,6 +40,9 @@ export default function SelectMenu(props: Props) {
 				<div className="options">
 					{options.map((option) => {
 						return (
+							// <button className="option" onClick={() => handleMenuItemClick("United States")}>
+							// <button className="option" onClick={() => handleMenuItemClick("Canada")}>
+							// <button className="option" onClick={() => handleMenuItemClick("India")}>
 							<button
 								key={option}
 								className="option"
@@ -58,3 +64,8 @@ export default function SelectMenu(props: Props) {
 // true && false = false
 // false && true = false
 // false && false = false
+
+// someCondition ? expression1 : expression2
+
+// Truthy values => true, "hello", 1, ["hello"], {name: "hello"}
+// Falsy values => false, "", 0, [], {}
