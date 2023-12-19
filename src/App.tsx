@@ -1,6 +1,7 @@
 import SelectMenu from "./components/SelectMenu/SelectMenu";
 import "./App.css";
 import { useState } from "react";
+import Todos from "./components/Todos/Todos";
 
 function App() {
 	const [count, setCount] = useState(0);
@@ -23,6 +24,7 @@ function App() {
 					options={["Male", "Female", "Other"]}
 				/>
 			</div>
+			<Todos />
 		</div>
 	);
 }
