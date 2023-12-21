@@ -20,8 +20,7 @@ export default function Todos() {
 	const [isLoading, setIsLoading] = useState(true);
 
 	// useEffect(() => {
-	// 	delay(10000).then(() => {
-	// 		console.log("10 seconds have passed");
+	// 	delay(1000).then(() => {
 	// 		fetch("https://jsonplaceholder.typicode.com/todos")
 	// 			.then((response) => response.json())
 	// 			.then((json) => {
@@ -34,7 +33,6 @@ export default function Todos() {
 	useEffect(() => {
 		async function startFetching() {
 			await delay(10000);
-			console.log("10 seconds have passed");
 			const response = await fetch(
 				"https://jsonplaceholder.typicode.com/todos"
 			);

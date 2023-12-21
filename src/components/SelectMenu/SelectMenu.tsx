@@ -6,6 +6,8 @@ type Props = {
 	options: string[];
 };
 
+// Generally -> pure function -> fn(input) => output => fn(props) => UI
+// In React -> fn(props) state => UI
 // states
 // 	isMenuOpen: false,
 // 	selectedOption: "Canada",
