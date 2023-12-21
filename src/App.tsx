@@ -1,12 +1,12 @@
 import "./App.css";
-import FocusInputForm from "./components/FocusInputForm";
+import Refs from "./components/Refs";
 
 function App() {
 	console.log("App renders");
 
 	return (
 		<div>
-			<FocusInputForm />
+			<Refs />
 		</div>
 	);
 }
