@@ -1,13 +1,12 @@
-import SelectMenu from "./components/SelectMenu/SelectMenu";
 import "./App.css";
-import InfiniteRenders from "./components/InfiniteRenders";
+import FocusInputForm from "./components/FocusInputForm";
 
 function App() {
 	console.log("App renders");
 
 	return (
 		<div>
-			<InfiniteRenders />
+			<FocusInputForm />
 		</div>
 	);
 }
