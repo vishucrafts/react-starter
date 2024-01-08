@@ -3,10 +3,16 @@ import Button from "./components/Button";
 
 function App() {
 	return (
-		<div>
-			<Button disabled>Solid</Button>
-			<Button color="ghost">Ghost</Button>
-			<Button color="soft">Soft</Button>
+		<div className="flex items-start gap-2 p-2">
+			<Button disabled size="small">
+				Solid
+			</Button>
+			<Button variant="ghost" size="medium">
+				Ghost
+			</Button>
+			<Button variant="soft" size="large">
+				Soft
+			</Button>
 		</div>
 	);
 }
