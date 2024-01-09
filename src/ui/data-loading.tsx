@@ -25,35 +25,57 @@ export default function DataLoadingExample(props: Props) {
 	const [todosError, setTodosError] = useState(false);
 
 	useEffect(() => {
-		setTodosLoading(true);
-		fetch("https://jsonplaceholder.typicode.com/todos")
-			.then((response) => response.json())
-			.then((json) => {
+		let ignore = false;
+		async function fetchTodos() {
+			try {
+				setTodosLoading(true);
+				const response = await fetch(
+					"https://jsonplaceholder.typicode.com/todos"
+				);
+				if (!response.ok) {
+					throw new Error("Network response was not ok");
+				}
+				const json = await response.json();
+
+				if (ignore) return;
+
 				setTodos(json);
 				setTodosLoading(false);
-			});
+			} catch (error) {
+				setTodosError(true);
+			}
+		}
+
+		fetchTodos();
+
+		return () => {
+			ignore = true;
+		};
 	}, []);
 
 	useEffect(() => {
 		let ignore = false;
-		fetch("http://localhost:4000")
-			.then((response) => {
+
+		async function fetchProducts() {
+			try {
+				setProductsLoading(true);
+				const response = await fetch("http://localhost:4000");
 				if (!response.ok) {
 					throw new Error("Network response was not ok");
 				}
-				return response.json();
-			})
-			.then((data) => {
-				if (ignore) {
-					setProducts(data.products);
-					setReqId(data.reqId);
-				}
+				const json = await response.json();
 
+				if (ignore) return;
+
+				setProducts(json.products);
+				setReqId(json.reqId);
 				setProductsLoading(false);
-			})
-			.catch(() => {
+			} catch (error) {
 				setProductsError(true);
-			});
+			}
+		}
+
+		fetchProducts();
 
 		return () => {
 			ignore = true;

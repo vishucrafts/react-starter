@@ -14,14 +14,14 @@ export type Product = {
 export default function Products() {
 	const [products, setProducts] = useState<Product[]>([]);
 	const [reqId, setReqId] = useState(0);
-	const [showModal, setShowModal] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	function toggleModal() {
-		setShowModal(!showModal);
+		setIsModalOpen(!isModalOpen);
 	}
 
 	return (
-		<div className="flex flex-col items-start gap-2 p-2 w-1/2">
+		<div className="flex items-start gap-2 p-2 w-1/2">
 			<div className="flex flex-col gap-2">
 				<div>Req Id {reqId}</div>
 				<div>Products</div>
@@ -33,8 +33,10 @@ export default function Products() {
 					</div>
 				))}
 			</div>
-			<Button onClick={toggleModal}>Open Modal</Button>
-			{showModal && (
+			<Button onClick={toggleModal}>
+				{isModalOpen ? "Close Modal" : "Open Modal"}
+			</Button>
+			{isModalOpen && (
 				<Modal onClose={toggleModal}>
 					<DataLoadingExample
 						products={products}
