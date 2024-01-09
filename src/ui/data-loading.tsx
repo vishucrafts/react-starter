@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { fetchProducts, fetchTodos } from "../api";
 
 export type Product = {
 	id: number;
@@ -26,16 +27,10 @@ export default function DataLoadingExample(props: Props) {
 
 	useEffect(() => {
 		let ignore = false;
-		async function fetchTodos() {
+		async function startFetching() {
 			try {
 				setTodosLoading(true);
-				const response = await fetch(
-					"https://jsonplaceholder.typicode.com/todos"
-				);
-				if (!response.ok) {
-					throw new Error("Network response was not ok");
-				}
-				const json = await response.json();
+				const json = await fetchTodos();
 
 				if (ignore) return;
 
@@ -46,7 +41,7 @@ export default function DataLoadingExample(props: Props) {
 			}
 		}
 
-		fetchTodos();
+		startFetching();
 
 		return () => {
 			ignore = true;
@@ -56,14 +51,10 @@ export default function DataLoadingExample(props: Props) {
 	useEffect(() => {
 		let ignore = false;
 
-		async function fetchProducts() {
+		async function startFetching() {
 			try {
 				setProductsLoading(true);
-				const response = await fetch("http://localhost:4000");
-				if (!response.ok) {
-					throw new Error("Network response was not ok");
-				}
-				const json = await response.json();
+				const json = await fetchProducts();
 
 				if (ignore) return;
 
@@ -75,7 +66,7 @@ export default function DataLoadingExample(props: Props) {
 			}
 		}
 
-		fetchProducts();
+		startFetching();
 
 		return () => {
 			ignore = true;
