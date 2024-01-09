@@ -7,18 +7,19 @@ type Props = {
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export default function Button(props: Props) {
-	const { variant: color = "solid", size = "medium" } = props;
+	const { variant = "solid", size = "medium", ...restProps } = props;
 	return (
 		<button
 			className={clsx([
 				"font-medium text-white rounded-md py-1",
-				color === "solid" && "bg-blue-500",
-				color === "ghost" && "bg-white border text-blue-600 border-blue-500",
-				color === "soft" && "bg-blue-100 text-blue-500",
+				variant === "solid" && "bg-blue-500",
+				variant === "ghost" && "bg-white border text-blue-600 border-blue-500",
+				variant === "soft" && "bg-blue-100 text-blue-500",
 				size === "small" && "text-xs px-1",
 				size === "medium" && "text-base px-2",
 				size === "large" && "text-xl px-3",
 			])}
+			{...restProps}
 		>
 			{props.children}
 		</button>
